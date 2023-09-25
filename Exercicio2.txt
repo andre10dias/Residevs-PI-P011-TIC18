@@ -1,0 +1,4 @@
+Tipos de coesão e acoplamento utilizados:
+
+A coesão é do tipo comunicacional, pois a sequência de execuções ocorrem do mesmo lado, ou seja, utilizam a mesmo entrada ou saída.
+Já o acoplamento é o acoplamento de dados, pois os dados são passados por parâmetros.
