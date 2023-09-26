@@ -5,8 +5,8 @@ using namespace std;
 int insere_meio(int *vetor, int qtde, int elemento);
 
 int main(void) {
-    int tamanho = 6;
     int vetor[] = {1, 2, 3, 4, 5, 6};
+    int tamanho = (sizeof(vetor) / sizeof(vetor[0]));
 
     tamanho = insere_meio(vetor, tamanho, 100);
 

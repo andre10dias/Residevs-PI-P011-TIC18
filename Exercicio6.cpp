@@ -4,45 +4,79 @@ using namespace std;
 
 int* intercala(int *vet1, int tam1, int *vet2, int tam2);
 
-//Tá imprimindo endereço de memória
-
 int main(void) {
-    int tam1 = 5;
-    int tam2 = 5;
-
-    int vet1[] = {0, 2, 4, 6, 8};
+    int vet1[] = {0, 2, 4, 6, 8, 10, 12};
     int vet2[] = {1, 3, 5, 7, 9};
 
+    int tam1 = (sizeof(vet1) / sizeof(vet1[0]));
+    int tam2 = (sizeof(vet2) / sizeof(vet2[0]));
+
     int tamanho = tam1 + tam2;
-    int* vet3[tamanho];
 
-    vet3[tamanho] = intercala(vet1, tam1, vet2, tam2);
+    int* vet3 = intercala(vet1, tam1, vet2, tam2);
 
+    cout << "\nValores intercalados:\n";
     for (int i = 0; i < tamanho; i++)
     {
         cout << vet3[i] << "\t";
     }
-    
 
-    cout << endl;
+    cout << endl << endl;
     return 0; 
 }
 
 int* intercala(int *vet1, int tam1, int *vet2, int tam2) {
     int tamanho = tam1 + tam2;
-    int vet3[tamanho];
+    int *vet3;
 
-    for (int i = 0; i < tamanho; i++)
+    vet3 = new int[tamanho];
+    if (tam1 == tam2)
     {
-        if (i % 2 == 0)
+        for (int i = 0, j = 0, x = 0; i < tamanho; i++)
         {
-            vet3[i] = vet1[i];
+            if (i % 2 == 0)
+            {
+                vet3[i] = vet1[j];
+                j++;
+            }
+            else 
+            {
+                vet3[i] = vet2[x];
+                x++;
+            }
         }
-        else 
+    }
+    else
+    {
+        for (int i = 0, j = 0, x = 0; i < tamanho; i++)
         {
-            vet3[i] = vet2[i];
+            if (i % 2 == 0)
+            {
+                if (j < tam1)
+                {
+                    vet3[i] = vet1[j];
+                    j++;
+                }
+                else
+                {
+                    vet3[i] = vet2[x];
+                    x++;
+                }
+            }
+            else 
+            {
+                if (x < tam2)
+                {
+                    vet3[i] = vet2[x];
+                    x++;
+                }
+                else
+                {
+                    vet3[i] = vet1[j];
+                    j++;
+                }
+            }
         }
-        
     }
     
     return vet3;
