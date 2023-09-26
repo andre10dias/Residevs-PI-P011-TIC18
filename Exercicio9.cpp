@@ -3,12 +3,10 @@
 
 using namespace std;
 
-//Em construção
-
 float calc_serie(int N);
 
 int main(void) {
-    cout << calc_serie(5);
+    cout << "Resultado: " << calc_serie(5) << endl;
     cout << endl;
     return 0; 
 }
@@ -29,8 +27,6 @@ float calc_serie(int N) {
                 numerador.push_back(N - j);
             }
         }
-
-        cout << numerador[i]; 
     }
     
     for (int i = 0; i < N; i++)
@@ -43,23 +39,23 @@ float calc_serie(int N) {
                 denominador.push_back(j);
             }
         }
-
-        cout << denominador[i]; 
     }
 
-    cout << "\n\nS = ";
-    for (int i = 0; i < N; i++)
+    int tamanho = numerador.size();
+
+    //cout << "\n\nS = ";
+    for (int i = 0; i < tamanho; i++)
     {
         s += numerador[i] / denominador[i];
-        cout << numerador[i] << " / " << denominador[i];
+        //cout << "(" << numerador[i] << " / " << denominador[i] << ")";
 
-        if (i < N-1)
+        /*if (i < tamanho-1)
         {
             cout << " + ";
-        }
+        }*/
     } 
 
-    cout << " = " << s;
+    //cout << " = " << s;
 
     cout << endl << endl;
     
