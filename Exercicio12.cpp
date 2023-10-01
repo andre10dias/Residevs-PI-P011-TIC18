@@ -1,40 +1,54 @@
 #include <iostream>
 #include <string>
+#include <algorithm>
+#include <vector>
 
 using namespace std;
 
-char intercessao(string a, string b);
-
-//Em construção
+string intercessao(string a, string b);
 
 int main(void) {
-    string a = "joana";
-    string b = "pidamanhagaba";
-    intercessao(a, b);
+    string a = "pescador";
+    string b = "agricultor";
+
+    string inter = intercessao(a, b);
+    cout << "String com letras em comum: " << inter << endl;
+
     cout << endl;
     return 0; 
 }
 
-char intercessao(string a, string b) {
-    int tam1 = (sizeof(a) / sizeof(a[0]));
-    int tam2 = (sizeof(b) / sizeof(b[0]));
+string intercessao(string a, string b) {
+    int tam1 = a.size();
+    int tam2 = b.size();
 
-    int tamanho = tam1 + tam2;
+    vector<char> intercessao;
+    char letra1;
+    char letra2;
 
-    char intercessao[tamanho];
-
+    
     for (int i = 0; i < tam1; i++)
     {
+        letra1 = a[i];
         for (int j = 0; j < tam2; j++)
         {
-            if (a[i] == b[j])
+            letra2 = b[j];
+            if (int(letra1) == int(letra2))
             {
-                intercessao[i] = a[i];
+                if (intercessao.size() == 0 || count(intercessao.begin(), intercessao.end(), letra1) == 0)
+                {
+                    intercessao.push_back(letra1);
+                }
             }
             
         }
-        
     }
 
-    cout << intercessao << endl;
+    string str = "";
+    for (char c : intercessao)
+    {
+        str += c;
+    }
+
+    return str;
 }
