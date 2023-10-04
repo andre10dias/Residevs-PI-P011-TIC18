@@ -12,7 +12,7 @@ int main(void) {
     string b = "agricultor";
 
     string inter = intercessao(a, b);
-    cout << "String com letras em comum: " << inter << endl;
+    cout << "\nString com letras em comum: " << inter << endl;
 
     cout << endl;
     return 0; 
